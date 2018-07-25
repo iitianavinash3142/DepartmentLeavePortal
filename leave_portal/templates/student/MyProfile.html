@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends "student/stud_dashboard.html" %}
+{% load staticfiles %}
+    {% block stud %}
+
+{#<div class="jumbotron">#}
+<div class="container1">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad" >
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{ user_obj.Name }}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+
+
+                <div class=" col-md-12 col-lg-12 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Roll No: </td>
+                        <td>{{ user_obj.roll_no }}</td>
+                      </tr>
+                      <tr>
+                        <td>Web-Mail: </td>
+                        <td>{{ user_obj.webmail }}@iitg.ac.in</td>
+                      </tr>
+                      <tr>
+                        <td>Course: </td>
+                        <td>{{ user_obj.course }}</td>
+                      </tr>
+                      <tr>
+                        <td>Acedemic Year</td>
+                        <td>{{ user_obj.acedemic_year }}</td>
+                      </tr>
+                      <tr>
+                        <td>Hostel:</td>
+                        <td>{{ user_obj.hostel_name }}</td>
+                      </tr>
+
+                    <tr>
+                        <td>Mobile Number</td>
+                        <td>{{ user_obj.mob_number }}(main)<br>{{ user_obj.emergency_mob_num }}(Emergency)
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>TA Instructor</td>
+                        <td>{{ user_obj.TA_instructor }}</td>
+                      </tr>
+                    <tr>
+                        <td>Supervisor</td>
+                        <td>{{ user_obj.Supervisor_1 }}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+
+
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="{% url 'students:edit_profile' user.id %}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>Edit</a>
+                        </span>
+                    </div>
+
+          </div>
+        </div>
+
+
+
+</div>
+{#</div>#}
+{% endblock %}

@@ -1,0 +1,30 @@
+Django==2.0.5
+python=3
+pip install --upgrade django-crispy-forms
+
+
+
+//this is not requirement right now
+sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-contrib
+conda install -c anaconda psycopg2 
+conda install Django==2.0
+python -c "import django; print(django.get_version())"
+conda install -c conda-forge django
+pip install django-offlinecdn
+pip install --upgrade django-crispy-forms
+ pip install django-multiselectfield
+pip install bcrypt
+pip install django[argon2]
+pip install pillow
+
+//for practice
+
+conda install -c conda-forge faker
+conda install -c r r-essentials
+conda install -c r r-irkernel 
+//
+for testing
+//to drop table
+python manage.py migrate leave zero
+//to delete database
+python manage.py flush

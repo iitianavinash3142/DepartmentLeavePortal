@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+    <div class="navbar navbar-inverse navbar-fixed-left">
+    {% if user_obj.profile_pic %}
+    <li><img src="{{ user_obj.profile_pic.url}}" class="img-circle" height="100" width="100">
+    </li>
+    {% else %}
+    <li><img src="#" class="img-circle" height="100" width="100">
+    </li>
+    {% endif %}
+     <ul class="nav navbar-nav">
+        <li><a href="{% url 'staff:staff_dash_board' %}"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+        <li><a href="{% url 'staff:edit_profile' user.id %}"><span class="glyphicon glyphicon-edit"></span>  Profile</a></li>
+        <li><a href="{% url 'staff:leave_request' %}" ><span class="glyphicon glyphicon-envelope"></span>
+            Request<span class="badge">{{leavecount}}</span></a></li>
+        <li><a href="{% url 'staff:leave_history' %}"><span class="glyphicon glyphicon-comment"></span>
+            history<span class="badge">{{historycount}}</span></a></li>
+    </ul>
+</div>
+
+<div class="main">
+
+
+
+    {% block staff %}
+    {% endblock %}
+
+</div>
+{% endblock %}

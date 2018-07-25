@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% extends "student/stud_dashboard.html" %}
+{% load staticfiles %}
+{% block stud %}
+
+<div class="leaverequest">
+    {% if currleave %}
+    <table class="table table-striped table-dark table-bordered table-hover ">
+        <thead>
+        <tr>
+            <th>Extra</th>
+            <th>Name</th>
+            <th>roll no</th>
+            <th>leavefrom</th>
+            <th>leaveto</th>
+            <th>reason</th>
+            <th>Status</th>
+            <th>cancel</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr>
+            <!--<th scope="row">{{i}}</th>-->
+            <td>
+                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#demo{{ currleave.id }}">
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                        </button>
+                        <div class="modal fade" id="demo{{ currleave.id }}" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Extra Document Related To Leave</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td>Type of Leave:</td>
+                                                <td>{{ currleave.TypeOfLeave }}</td>
+                                            </tr>
+                                            {% if currleave.Doc1 %}
+                                            <tr>
+                                                <td>Document 01:</td>
+                                                <td><a href="{{ currleave.Doc1.url }}" target="_blank">Click Here !</a></td>
+                                            </tr>
+                                            {% endif %}
+                                            {% if currleave.Doc2 %}
+                                            <tr>
+                                                <td>Document 02</td>
+                                                <td><a href="{{ currleave.Doc2.url }}" target="_blank">Click Here !</a</td>
+                                            </tr>
+                                            {%  endif %}
+                                            <tr>
+                                                <td>Address while on Leave:</td>
+                                                <td>{{ currleave.AddressWhileOnLeave }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mobile Number while on leave:</td>
+                                                <td>{{ currleave.PhoneNumberWhileOnLeave }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date of apply:</td>
+                                                <td>{{ currleave.DateOfApply }}</td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div class="modal-footer">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+            </td>
+
+            <td>{{currleave.LeaveId.Name}}</td>
+            <td>{{currleave.LeaveId.roll_no}}</td>
+            <td>{{currleave.LeaveFrom}}</td>
+            <td>{{currleave.LeaveTo}}</td>
+            <td>{{currleave.ReasonForLeave}}</td>
+            <td> {% if currleave.Flag == 1 %}
+                TA_instructor
+                {% elif currleave.Flag == 2 %}
+                SuperVisor
+                {% elif currleave.Flag == 3 %}
+                Office
+                {% elif currleave.Flag == 4 %}
+                Hod
+                {% elif currleave.Flag == 5 %}
+                Approved
+                {% elif currleave.Flag == 7 %}
+                DPPC
+                {% else%}
+                Cancelled
+                {% endif %}
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger btn-md ">
+                    <span class="glyphicon glyphicon-trash"></span> Cancel
+                </a>
+            </td>
+
+        </tr>
+
+
+        </tbody>
+
+
+    </table>
+
+
+</div>
+
+
+{% else %}
+<p>no current leave available</p>
+{% endif %}
+
+</div>
+{% endblock %}

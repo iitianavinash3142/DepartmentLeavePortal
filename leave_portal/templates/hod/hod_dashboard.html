@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+
+
+<div class="navbar navbar-inverse navbar-fixed-left">
+    {% if user_obj.profile_pic %}
+    <li><img src="{{ user_obj.profile_pic.url}}" class="img-circle" height="100" width="100">
+    </li>
+    {% else %}
+    <li><img src="#" class="img-circle" height="100" width="100">
+    </li>
+    {% endif %}
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'hod:hod_dash_board' %}"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+        <li><a href="{% url 'hod:edit_profile' user.id %}"><span class="glyphicon glyphicon-edit"></span>  Profile</a></li>
+        <li><a href="{% url 'hod:leave_request' %}" ><span class="glyphicon glyphicon-envelope"></span>Request<span class="badge">{{leavecount}}</span></a></li>
+        <li><a href="{% url 'hod:leave_history' %}"><span class="glyphicon glyphicon-comment"></span>  history<span class="badge">{{historycount}}</span></a></li>
+    </ul>
+</div>
+{#<div class="sidenav">#}
+{##}
+{##}
+{#    {% if user_obj.profile_pic %}#}
+{#    <img src="{{ user_obj.profile_pic.url}}" class="img-circle" height="150" width="150">#}
+{#    {% else %}#}
+{#    <img src="#" class="img-circle" height="150" width="150">#}
+{#    {% endif %}#}
+{#    <a href="#pageSubmenu" data-toggle="collapse" class="btn btn-primary btn-md">#}
+{#            <i class="glyphicon glyphicon-user"></i>#}
+{#            Profile#}
+{#        </a>#}
+{#    <ul class="collapse list-unstyled" id="pageSubmenu">#}
+{##}
+{#        <li><a href="{% url 'hod:edit_profile' user.id %}">#}
+{#            <i class="glyphicon glyphicon-edit"></i>Edit</a></li>#}
+{##}
+{#    </ul>#}
+{#    <a href="{% url 'hod:leave_request' %}" class="btn btn-success btn-md">#}
+{#        <i class="glyphicon glyphicon-envelope"></i>Request<span class="badge">{{leavecount}}</span></a>#}
+{#    <a href="{% url 'hod:leave_history' %}" class="btn btn-success btn-md">#}
+{#        <i class="glyphicon glyphicon-cd"></i>History<span class="badge">{{historycount}}</span></a>#}
+{#    <a href="#contact">history</a>#}
+{#</div>#}
+<div class="main">
+
+
+    {% block hod %}
+    {% endblock %}
+</div>
+{% endblock %}

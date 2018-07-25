@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends "hod/hod_dashboard.html" %}
+{% load staticfiles %}
+    {% block hod %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<div class="container">
+
+
+    {% if save %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <strong>Successful!</strong> Profile Edited.
+        </div>
+    {% else %}
+        <h1>Edit your profile !!</h1>
+        <h3> fill the form</h3>
+
+
+{#        <form enctype="multipart/form-data" method="post">#}
+{#            {% csrf_token %}#}
+{#                {% for field in form %}#}
+{#                    <div class="form-group">#}
+{#                             <div class="col-sm-offset-2 col-sm-10">#}
+{#                                  <span class="text-danger small">{{ field.errors }}</span>#}
+{#                             </div>#}
+{#                             <label class="control-label">{{ field.label_tag }}</label>#}
+{#                             <input class="form-control" type="text">{{ field }}</input>#}
+{##}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            <div class="form-group">#}
+{#                            <div class="col-sm-offset-2 col-sm-10">#}
+{#                                <button type="submit" class="btn btn-success btn-lg btn-block">#}
+{#                                    Save changes !!#}
+{#                                </button>#}
+{#                            </div>#}
+{#                    </div>#}
+{##}
+{##}
+{#        </form>#}
+    <form enctype="multipart/form-data" method="POST">
+      {{ form.as_p }}
+      {% csrf_token %}
+        <button type="submit" class="btn btn-success" value="Save">Save</button>
+    </form>
+
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends "staff/staff_dashboard.html" %}
+{% load staticfiles %}
+{% block staff %}
+
+<div class="jumbotron">
+    {% if mtechlist %}
+    <table class="table table-striped table-bordered table-hover" id="mydata">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>Odinary</th>
+            <th>Academic</th>
+            <th>Medical</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for mtech in mtechlist %}
+        <tr>
+            <!--<th scope="row">{{i}}</th>-->
+            <td>{{mtech.Name}}</td>
+            <td>{{mtech.Odinary}}</td>
+            <td>{{mtech.Acedemic}}</td>
+            <td>{{mtech.Medical}}</td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>no request available</p>
+    {% endif %}
+
+</div>
+{% endblock %}

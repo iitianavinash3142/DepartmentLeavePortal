@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+    <h2>Sign up for a free account</h2>
+    <p class="lead">Select below the type of account you want to create</p>
+    <a href="{% url 'student_signup' %}" class="btn btn-primary btn-lg" role="button">I'm a student</a>
+    <a href="{% url 'faculty_signup' %}" class="btn btn-primary btn-lg" role="button">I'm a faculty</a>
+    <a href="{% url 'staff_signup' %}" class="btn btn-primary btn-lg" role="button">I'm a staff</a>
+    <a href="{% url 'hod_signup' %}" class="btn btn-primary btn-lg" role="button">I'm a hod</a>
+    <a href="{% url 'dppc_signup' %}" class="btn btn-primary btn-lg" role="button">I'm a DPPC</a>
+</div>
+
+    {% include 'footer.html' %}
+{% endblock %}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+    {% block body_block %}
+
+{#    <div class="jumbotron">#}
+    <div class="container">
+
+
+
+    {% if save %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <strong>Successful!</strong> Profile Updated.
+        </div>
+    {% else %}
+
+        <h1>Update your profile !!</h1>
+        <h3> fill the form</h3>
+
+
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+        <fieldset id = "personalinfo">
+                <legend>Personal Information</legend>
+                {% for field in profile_form %}
+                    <div class="form-group">
+                             <div class="col-sm-offset-2 col-sm-10">
+                                  <span class="text-danger small">{{ field.errors }}</span>
+                             </div>
+                             <label class="control-label col-sm-5">{{ field.label_tag }}</label>
+
+                             <div class="col-sm-7">{{ field }}</div>
+
+
+                    </div>
+
+                {% endfor %}
+        </fieldset>
+
+            <fieldset >
+            <legend>Leave Information</legend>
+                <input type="checkbox" id="mtech" name="mtech" value="yes" onclick="showHideShipInfo()">
+            <label for="mtech">Are you a Mtech Student ?</label>
+            <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                  <span class="text-danger small">{{ leave_form.Odinary.errors }}</span>
+                             </div>
+                             <label class="control-label col-sm-5">{{ leave_form.Odinary.label_tag }}</label>
+
+                             <div class="col-sm-7">{{ leave_form.Odinary }}</div>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                  <span class="text-danger small">{{ leave_form.Medical.errors }}</span>
+                             </div>
+                             <label class="control-label col-sm-5">{{ leave_form.Medical.label_tag }}</label>
+
+                             <div class="col-sm-7">{{ leave_form.Medical}}</div>
+                <div class="col-sm-offset-2 col-sm-10">
+                                  <span class="text-danger small">{{ leave_form.Acedemic.errors }}</span>
+                             </div>
+                             <label class="control-label col-sm-5">{{ leave_form.Acedemic.label_tag }}</label>
+
+                             <div class="col-sm-7">{{ leave_form.Acedemic }}</div>
+                <div id="forphd">
+                    <div class="col-sm-offset-2 col-sm-10">
+                                  <span class="text-danger small">{{ leave_form.Maternity.errors }}</span>
+                             </div>
+                             <label class="control-label col-sm-5">{{ leave_form.Maternity.label_tag }}</label>
+
+                             <div class="col-sm-7">{{ leave_form.Maternity }}</div>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                  <span class="text-danger small">{{ leave_form.Paternity.errors }}</span>
+                             </div>
+                             <label class="control-label col-sm-5">{{ leave_form.Paternity.label_tag }}</label>
+
+                             <div class="col-sm-7">{{ leave_form.Paternity }}</div>
+                </div>
+
+
+
+                    </div>
+        </fieldset>
+
+                    <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <button type="submit" class="btn btn-success btn-lg btn-block">
+                                    Update !!
+                                </button>
+                            </div>
+                    </div>
+        </form>
+
+    {% endif %}
+    </div>
+{#    </div>#}
+{% endblock %}

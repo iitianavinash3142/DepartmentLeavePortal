@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "student/stud_dashboard.html" %}
+{% load staticfiles %}
+{% block stud %}
+<div class="jumbotron">
+    {% if comments %}
+    <table class="table table-striped table-dark table-bordered table-hover " id="mydata">
+        <thead>
+        <tr>
+            <th>Person</th>
+            <th>Leave Applied Date</th>
+            <th>Remark</th>
+            <th>DateOfComment</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+        <tr>
+
+            <td>{{comment.Person}}</td>
+            <td>{{comment.Leave.DateOfApply}}</td>
+            <td>{{comment.Remark}}</td>
+            <td>{{comment.DateOfComment }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No Comments</p>
+{% endif %}
+</div>
+{% endblock %}

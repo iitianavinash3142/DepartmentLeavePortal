@@ -1,0 +1,36 @@
+{% extends "staff/staff_dashboard.html" %}
+{% load staticfiles %}
+{% block staff %}
+<div class="jumbotron">
+<div class="container">
+    {% if save %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <strong>Successful!</strong>
+        </div>
+    {% else %}
+        <h1> {{ leave.LeaveId.Name }}</h1>
+        <h3> Give Your Comment </h3>
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+                {% for field in profile_form %}
+                    <div class="form-group">
+                             <div class="col-sm-offset-2 col-sm-10">
+                                  <span class="text-danger small">{{ field.errors }}</span>
+                             </div>
+                             <label class="control-label col-sm-6">{{ field.label_tag }}</label>
+                             <div class="col-sm-6">{{ field }}</div>
+                    </div>
+                {% endfor %}
+                    <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success btn-lg btn-block">
+                                    Submit
+                                </button>
+                            </div>
+                    </div>
+        </form>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

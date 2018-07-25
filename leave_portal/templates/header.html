@@ -1,0 +1,46 @@
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class=" col-md-6 ">
+                <div class="navbar-header">
+
+                    <div class="col-6">
+                        <h1 class="logo">
+                            <a href="{% url 'home' %}">Civil-Department</a>
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class=" col-md-5 ">
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="#" class="navbar-brand" role="button">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Login as
+                        <strong>{{ user.username }}</strong></a>.
+                    </li>
+                    <li><a href="{% url 'logout' %}" class="navbar-brand" role="button">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Log out</a>.
+                    </li>
+
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="navbar-brand" role="button">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Login</a>.
+                    </li>
+                    <li><a href="{% url 'signup' %}" class="navbar-brand" role="button">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;sign-up</a>.
+                    </li>
+                {% endif %}
+            </ul>
+            </div>
+            <div class=" col-md-1 ">
+            </div>
+
+        </div>
+</nav>
+
+{#{%  endblock %}#}

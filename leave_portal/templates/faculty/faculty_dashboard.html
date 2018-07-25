@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+    <div class="navbar navbar-inverse navbar-fixed-left">
+    {% if user_obj.profile_pic %}
+    <li><img src="{{ user_obj.profile_pic.url}}" class="img-circle" height="100" width="100"></li>
+    {% else %}
+    <li><img src="#" class="img-circle" height="100" width="100"></li>
+    {% endif %}
+
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'faculty:fac_dash_board' %}"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+        <li><a href="{% url 'faculty:edit_profile' user.id %}"><span class="glyphicon glyphicon-user"></span>  Profile</a></li>
+
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span>
+            Status<span class="badge">{{TaLength|add:SvLength}}</span>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="{% url 'faculty:ta_request' %}"><span class="glyphicon glyphicon-user"></span>
+                    TA instructor<span class="badge">{{TaLength}}</span></a></li>
+                <li class="divider"></li>
+                <li><a href="{% url 'faculty:supervisor_request' %}"><span class="glyphicon glyphicon-eye-open"></span>
+                    Supervisor<span class="badge">{{SvLength}}</span></a></li>
+            </ul>
+        </li>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-envelope"></span>
+            History<span class="badge">{{ TaHistory|add:SvHistory}}</span>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="{% url 'faculty:ta_history' %}"><span class="glyphicon glyphicon-user"></span>
+                    TA_instructor<span class="badge">{{TaHistory}}</span></a></li>
+                <li class="divider"></li>
+                <li><a href="{% url 'faculty:sv_history' %}"><span class="glyphicon glyphicon-eye-open"></span>
+                    Supervisor<span class="badge">{{SvHistory}}</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+{#<div class="sidenav">#}
+{##}
+{#    {% if user_obj.profile_pic %}#}
+{#    <img src="{{ user_obj.profile_pic.url}}" class="img-circle" height="150" width="150">#}
+{#    {% else %}#}
+{#    <img src="#" class="img-circle" height="150" width="150">#}
+{#    {% endif %}#}
+{##}
+{##}
+{#    <a href="#profile" data-toggle="collapse" class="btn btn-primary btn-md">#}
+{#        <i class="glyphicon glyphicon-user"></i>#}
+{#        Profile#}
+{#    </a>#}
+{##}
+{#    <ul class="collapse list-unstyled" id="profile">#}
+{##}
+{#        <li><a href="{% url 'faculty:edit_profile' user.id %}">#}
+{#            <i class="glyphicon glyphicon-edit"></i>Edit</a></li>#}
+{#    </ul>#}
+{##}
+{##}
+{#    <a href="#leaverequest" data-toggle="collapse" class="btn btn-success btn-md">#}
+{#        <i class="glyphicon glyphicon-envelope"></i>#}
+{#        Request<span class="badge">{{TaLength|add:SvLength}}</span>#}
+{#    </a>#}
+{#    <ul class="collapse list-unstyled" id="leaverequest">#}
+{#        <li><a href="{% url 'faculty:ta_request' %}">TA_instructor<span class="badge">{{TaLength}}</span></a></li>#}
+{#        <li><a href="{% url 'faculty:supervisor_request' %}">Supervisor<span class="badge">{{SvLength}}</span></a></li>#}
+{#    </ul>#}
+{##}
+{#    <a href="#history" data-toggle="collapse" class="btn btn-success btn-md">#}
+{#        <i class="glyphicon glyphicon-envelope"></i>#}
+{#        History<span class="badge">{{ TaHistory|add:SvHistory}}</span>#}
+{#    </a>#}
+{#    <ul class="collapse list-unstyled" id="history">#}
+{#        <li><a href="{% url 'faculty:ta_history' %}">TA_instructor<span class="badge">{{TaHistory}}</span></a></li>#}
+{#        <li><a href="{% url 'faculty:sv_history' %}">Supervisor<span class="badge">{{SvHistory}}</span></a></li>#}
+{#    </ul>#}
+{##}
+{#</div>#}
+<div class="main">
+    {% block facul %}
+    {% endblock %}
+</div>
+
+{% endblock %}
+
